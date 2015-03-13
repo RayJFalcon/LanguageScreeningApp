@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.external-png-1.4.5.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.icons-1.4.5.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.inline-png-1.4.5.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.inline-svg-1.4.5.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.4.5.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.theme-1.4.5.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css" />
+        <title>Personal Info</title>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/jquery-1.11.2.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+        <script type="text/javascript">             
+            function endOfPersonalInfoButton(){ window.location = './index.html' };
+
+        </script>
+        
+    </head>
+
+<body>
+  <div data-role="page" id="personalName" align="center">
+    <div data-role="header">
+  		<h1 style="font-size: 20px">What is your name?</h1>
+  	</div>
+  	<div data-role="content">	
+  		<textarea></textarea>
+  		
+  		<button onclick="takeNamePicture()">Take a Picture</button>
+  		<button onclick="getNamePhotoFromLibrary(pictureSource.PHOTOLIBRARY);">Get a Picture From Library</button>
+  		<img id="personalNameImage" width="200" height="300" style="display: none" src=""/>
+  		<script>
+	  		function takeNamePicture()
+	  			{
+	  				navigator.camera.getPicture(onSuccess, onFail, {quality: 50}))
+	  			}
+	  			function onNameSuccess(imageData)
+	  			{
+	  				var image = document.getElementById('personalNameImage');
+	  				image.src = "data:image/jpg;base64, " + imageData;
+	  				image.style.display = 'block';
+	  			}
+	  			function onNameFail(message)
+	  			{
+	  				alert('Failed because: ' + message);
+	  			}
+	  			function getNamePhotoFromLibrary(source)
+	  			{
+	  				navigator.camera.getPicture(onNameSuccess, onNameFail, {quality: 50, sourceType: source});
+	  			}
+  		</script>
+  	</div>
+  	<div data-role="footer">
+  		<a href="#personalAge" data-role="button">go to age question</a>
+  	</div>
+
+  </div>
+  
+  
+  <div data-role="page" id="personalAge" align="center">
+    <div data-role="header">
+  		<h1 style="font-size: 20px">How old are you?</h1>
+  	</div>
+  	<div data-role="content">	
+  		<textarea></textarea>
+  		
+  		<button onclick="takeAgePicture()">Take a Picture</button>
+  		<button onclick="getAgePhotoFromLibrary(pictureSource.PHOTOLIBRARY);">Get a Picture From Library</button>
+  		<img id="personalAgeImage" width="200" height="300" style="display: none" src=""/>
+  		<script>
+	  		function takeAgePicture()
+	  			{
+	  				navigator.camera.getPicture(onAgeSuccess, onAgeFail, {quality: 50}))
+	  			}
+	  			function onAgeSuccess(imageData)
+	  			{
+	  				var image = document.getElementById('personalAgeImage');
+	  				image.src = "data:image/jpg;base64, " + imageData;
+	  				image.style.display = 'block';
+	  			}
+	  			function onAgeFail(message)
+	  			{
+	  				alert('Failed because: ' + message);
+	  			}
+	  			function getAgePhotoFromLibrary(source)
+	  			{
+	  				navigator.camera.getPicture(onAgeSuccess, onAgeFail, {quality: 50, sourceType: source});
+	  			}
+  		</script>
+  	</div>
+  	<div data-role="footer">
+  		<a href="#personalSchool" data-role="button">go to school question</a>
+  	</div>
+
+  </div>
+  
+  
+  <div data-role="page" id="personalSchool" align="center">
+    <div data-role="header">
+  		<h1 style="font-size: 20px">Where do you go to school?</h1>
+  	</div>
+  	<div data-role="content">	
+  		<textarea></textarea>
+  		
+  		<button onclick="takeSchoolPicture()">Take a Picture</button>
+  		<button onclick="getSchoolPhotoFromLibrary(pictureSource.PHOTOLIBRARY);">Get a Picture From Library</button>
+  		<img id="personalSchoolImage" width="200" height="300" style="display: none" src=""/>
+  		<script>
+	  		function takeSchoolPicture()
+	  			{
+	  				navigator.camera.getPicture(onSchoolSuccess, onSchoolFail, {quality: 50}))
+	  			}
+	  			function onSchoolSuccess(imageData)
+	  			{
+	  				var image = document.getElementById('personalSchoolImage');
+	  				image.src = "data:image/jpg;base64, " + imageData;
+	  				image.style.display = 'block';
+	  			}
+	  			function onSchoolFail(message)
+	  			{
+	  				alert('Failed because: ' + message);
+	  			}
+	  			function getSchoolPhotoFromLibrary(source)
+	  			{
+	  				navigator.camera.getPicture(onSchoolSuccess, onSchoolFail, {quality: 50, sourceType: source});
+	  			}
+  		</script>
+  	</div>
+  	<div data-role="footer">
+  		<a href="#personalLive" data-role="button">go to live question</a>
+  	</div>
+
+  </div>
+  
+  
+  <div data-role="page" id="personalLive" align="center">
+    <div data-role="header">
+  		<h1 style="font-size: 20px">Where do you live?</h1>
+  	</div>
+  	<div data-role="content">	
+  		<textarea></textarea>
+  		
+  		<button onclick="takeLivePicture()">Take a Picture</button>
+  		<button onclick="getLivePhotoFromLibrary(pictureSource.PHOTOLIBRARY);">Get a Picture From Library</button>
+  		<img id="personalLiveImage" width="200" height="300" style="display: none" src=""/>
+  		<script>
+	  		function takeLivePicture()
+	  			{
+	  				navigator.camera.getPicture(onLiveSuccess, onLiveFail, {quality: 50}))
+	  			}
+	  			function onLiveSuccess(imageData)
+	  			{
+	  				var image = document.getElementById('personalLiveImage');
+	  				image.src = "data:image/jpg;base64, " + imageData;
+	  				image.style.display = 'block';
+	  			}
+	  			function onLiveFail(message)
+	  			{
+	  				alert('Failed because: ' + message);
+	  			}
+	  			function getLivePhotoFromLibrary(source)
+	  			{
+	  				navigator.camera.getPicture(onLiveSuccess, onLiveFail, {quality: 50, sourceType: source});
+	  			}
+  		</script>
+  	</div>
+  	<div data-role="footer">
+  		<a href="#personalBirthday" data-role="button">go to birthday question</a>
+  	</div>
+
+  </div>
+  
+  
+  <div data-role="page" id="personalBirthday" align="center">
+    <div data-role="header">
+  		<h1 style="font-size: 20px">When is your birthday?</h1>
+  	</div>
+  	<div data-role="content">	
+  		<textarea></textarea>
+  		<button onclick="takeBirthdayPicture()">Take a Picture</button>
+  		<button onclick="getBirthdayPhotoFromLibrary(pictureSource.PHOTOLIBRARY);">Get a Picture From Library</button>
+  		<img id="personalBirthdayImage" width="200" height="300" style="display: none" src=""/>
+  		<script>
+	  		function takeBirthdayPicture()
+	  			{
+	  				navigator.camera.getPicture(onBirthdaySuccess, onBirthdayFail, {quality: 50}))
+	  			}
+	  			function onBirthdaySuccess(imageData)
+	  			{
+	  				var image = document.getElementById('personalBirthdayImage');
+	  				image.src = "data:image/jpg;base64, " + imageData;
+	  				image.style.display = 'block';
+	  			}
+	  			function onBirthdayFail(message)
+	  			{
+	  				alert('Failed because: ' + message);
+	  			}
+	  			function getBirthdayPhotoFromLibrary(source)
+	  			{
+	  				navigator.camera.getPicture(onBirthdaySuccess, onBirthdayFail, {quality: 50, sourceType: source});
+	  			}
+  		</script>
+  	</div>
+  	<div data-role="footer">
+  		<a href="#personalGender" data-role="button">go to gender question</a>
+  	</div>
+
+  </div>
+  
+  
+  <div data-role="page" id="personalGender" align="center">
+  	<div data-role="header">
+  		<h1 style="font-size: 20px">Are you a boy?</h1>
+  	</div>
+  	<div data-role="content">
+  		<a href="#personalMonth" data-role="button" data-inline="true">Yes</a>
+  		<a href="#personalMonth" data-role="button" data-inline="true">No</a>
+  	</div>
+  	<div data-role="footer">
+  		
+  	</div>
+  	
+  </div>
+  
+  
+  <div data-role="page" id="personalMonth" align="center">
+  	<div data-role="header">
+  		<h1 style="font-size: 20px">What month is it?</h1>
+  	</div>
+  	<div data-role="content">
+  		<a href="#personalDay" data-role="button" data-inline="true">January</a>
+  		<a href="#personalDay" data-role="button" data-inline="true">February</a>
+  		<a href="#personalDay" data-role="button" data-inline="true">March</a>
+  		<a href="#personalDay" data-role="button" data-inline="true">April</a>
+  		<a href="#personalDay" data-role="button" data-inline="true">May</a>
+  		<a href="#personalDay" data-role="button" data-inline="true">June</a>
+  		<a href="#personalDay" data-role="button" data-inline="true">July</a>
+  		<a href="#personalDay" data-role="button" data-inline="true">August</a>
+  		<a href="#personalDay" data-role="button" data-inline="true">September</a>
+  		<a href="#personalDay" data-role="button" data-inline="true">October</a>
+  		<a href="#personalDay" data-role="button" data-inline="true">November</a>
+  		<a href="#personalDay" data-role="button" data-inline="true">December</a>
+  	</div>
+  	<div data-role="footer">
+  		
+  	</div>
+  	
+  </div>
+  
+  
+  <div data-role="page" id="personalDay" align="center">
+  	<div data-role="header">
+  		<h1 style="font-size: 20px">What day is it?</h1>
+  	</div>
+  	<div data-role="content">
+  		<a href="#personalYear" data-role="button" data-inline="true">Sunday</a>
+  		<a href="#personalYear" data-role="button" data-inline="true">Monday</a>
+  		<a href="#personalYear" data-role="button" data-inline="true">Tuesday</a>
+  		<a href="#personalYear" data-role="button" data-inline="true">Wednesday</a>
+  		<a href="#personalYear" data-role="button" data-inline="true">Thursday</a>
+  		<a href="#personalYear" data-role="button" data-inline="true">Friday</a>
+  		<a href="#personalYear" data-role="button" data-inline="true">Saturday</a>
+  	</div>
+  	<div data-role="footer">
+  		
+  	</div>
+  	
+  </div>
+  
+  
+  <div data-role="page" id="personalYear" align="center">
+  	<div data-role="header">
+  		<h1 style="font-size: 20px">What year is it?</h1>
+  	</div>
+  	<div data-role="content">
+  		<textarea></textarea>
+  	</div>
+  	<div data-role="footer">
+  		<a href="#personalLocation" data-role="button">go to location question</a>
+  	</div>
+  	
+  </div>
+  
+  
+  <div data-role="page" id="personalLocation" align="center">
+  	<div data-role="header">
+  		<h1 style="font-size: 20px">Where are you?</h1>
+  	</div>
+  	<div data-role="content">
+  		<a href="#personalEnd" data-role="button" data-inline="true">Home</a>
+  		<a href="#personalEnd" data-role="button" data-inline="true">School</a>
+  	</div>
+  	<div data-role="footer">
+  		<button onclick="endOfPersonalInfoButton();">((End of Section))</button>
+  	</div>
+  	
+  </div>
+</body>
+</html>

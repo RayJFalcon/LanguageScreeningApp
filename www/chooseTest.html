@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <title>Choose Test</title>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript"> 
+         
+       function expressiveButton(){ window.location = './expressive.html' };
+         
+       function receptiveButton(){ window.location = './receptive.html' };
+		
+	   function basicConceptsButton(){ window.location = './basicConcepts.html' };
+	   
+	   function backToIndex() { window.location = './index.html' };
+	</script>
+        
+</head>
+<body>
+    <div class="app">
+    			<span class="buttonSpacing"><button id="expressive" onclick="expressiveButton();">Expressive Testing</button></span><br /><br />
+    			<span class="buttonSpacing"><button id="receptive" onclick="receptiveButton();">Receptive Testing</button></span><br /><br />
+    			<span class="buttonSpacing"><button id="basicConcepts" onclick="basicConceptsButton();">Basic Concepts Testing</button></span><br /><br /><br />
+    			<span class="buttonSpacing"><button id="backToIndex" onclick="backToIndex();">Back To Start</button></span>
+    </div>
+</body>
+</html>
